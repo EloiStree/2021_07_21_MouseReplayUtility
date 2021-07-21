@@ -704,8 +704,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86fb4b59823a2704f9b6f1f1fbd3f93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_mouseRecorder: {fileID: 0}
-  m_mouseInteface: {fileID: 1487046534}
+  m_mouseRecorder: {fileID: 1335395568}
+  m_mouseInteface: {fileID: 1971964291}
   m_onTextEventReceived:
     m_PersistentCalls:
       m_Calls: []
@@ -864,9 +864,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_defaultMouseInterface: {fileID: 1487046534}
   m_startThreadAtAwake: 1
-  m_recordType: 1
+  m_recordType: 0
   m_priority: 1
-  m_delayBetweenFrameRecord: 10
+  m_delayBetweenFrameRecord: 50
 --- !u!4 &1335395569
 Transform:
   m_ObjectHideFlags: 0

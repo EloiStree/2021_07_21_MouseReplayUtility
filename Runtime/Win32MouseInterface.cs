@@ -12,8 +12,8 @@ public class Win32MouseInterface : MouseInterfaceMono
     private void Start()
     {
 
-        m_widthResolution = (uint)Screen.resolutions[0].width;
-        m_heightResolution = (uint)Screen.resolutions[0].height;
+        m_widthResolution = (uint)Screen.currentResolution.width;
+        m_heightResolution = (uint)Screen.currentResolution.height;
     }
     //Win32Mouse
     public override void GetMainScreenDimension(out uint width, out uint height)

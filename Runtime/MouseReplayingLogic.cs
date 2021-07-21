@@ -62,6 +62,11 @@ public class MouseReplayingLogic
         }
     }
 
+    public uint GetActionCount()
+    {
+        return m_replayingSequenceTemp.GetCount();
+    }
+
     public delegate void TextEventEmission(string text);
     public TextEventEmission m_listenToTextEmittedByReplay;
     private void Execute(ActionToDo_TextEventRelease action)

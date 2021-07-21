@@ -8,11 +8,9 @@ public class MouseRecorderLogic
 
 
     public int m_timeBetweenFrameInMs;
-
     public bool m_recording;
 
-
-    public RecordType m_recordType;
+    public RecordType m_recordType = RecordType.RecordEverything;
 
     public enum RecordType {
         RecordEverything,
@@ -64,6 +62,21 @@ public class MouseRecorderLogic
             RecordMouseClickIfChanged();
         }
         Thread.Sleep(m_timeBetweenFrameInMs);
+    }
+
+    public void SetMillisecondsBetweenRecord(uint milliseconds)
+    {
+        m_timeBetweenFrameInMs =(int) milliseconds;
+    }
+
+    public void SetRecordType(RecordType recordEverything)
+    {
+        m_recordType = recordEverything;
+    }
+
+    public uint GetActionCount()
+    {
+        return m_recordSequenceTemp.GetCount();
     }
 
     private void RecordMouseClickIfChanged()

@@ -42,6 +42,11 @@ public class Win32Mouse
     private const UInt32 MOUSEEVENTF_MIDDLEDOWN = 0x0020;  //The middle button was pressed
     private const UInt32 MOUSEEVENTF_MIDDLEUP = 0x0040;  //The middle button was released.
 
+
+    const uint MOUSEEVENTF_WHEEL = 0x0800;
+    const uint MOUSEEVENTF_HWHEEL = 0x01000;
+
+
     [DllImport("user32.dll")]
     public static extern short GetAsyncKeyState(UInt16 virtualKeyCode);
     //found at http://msdn.microsoft.com/en-us/library/dd375731(v=VS.85).aspx
