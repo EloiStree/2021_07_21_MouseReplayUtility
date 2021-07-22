@@ -151,7 +151,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1971964292}
-  - {fileID: 1487046533}
   m_Father: {fileID: 1028233561}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -677,7 +676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1162214094
 Transform:
   m_ObjectHideFlags: 0
@@ -862,10 +861,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14562cb2fadb1e1499dda9738c8b4f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_defaultMouseInterface: {fileID: 1487046534}
+  m_defaultMouseInterface: {fileID: 1971964291}
   m_startThreadAtAwake: 1
-  m_recordType: 0
-  m_priority: 1
+  m_onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onStartReplay:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onStartRecord:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onStop:
+    m_PersistentCalls:
+      m_Calls: []
+  m_defautlRecordType: 0
+  m_priority: 2
   m_delayBetweenFrameRecord: 50
 --- !u!4 &1335395569
 Transform:
@@ -960,55 +971,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427993770}
   m_CullTransparentMesh: 1
---- !u!1 &1487046532
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1487046533}
-  - component: {fileID: 1487046534}
-  m_Layer: 0
-  m_Name: WindowMouse
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1487046533
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1487046532}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -343.0662, y: -220.78398, z: -23.383764}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 358649437}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1487046534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1487046532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2f554ac2520f504f9de80df7c896d1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_xPx: 0
-  m_yPx: 0
-  m_l2rPct: 0
-  m_t2dPct: 0
-  m_widthResolution: 0
-  m_heightResolution: 0
 --- !u!1 &1567503472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,7 +1250,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1162214094}
-  - {fileID: 2139451301}
   m_Father: {fileID: 1028233561}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1361,99 +1322,3 @@ Transform:
   m_Father: {fileID: 358649437}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2139451300
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2139451301}
-  - component: {fileID: 2139451302}
-  m_Layer: 0
-  m_Name: Demo TripleClickRecord
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2139451301
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2139451300}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1914413605}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2139451302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2139451300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b84a2fdc136be504bae5fd48b9f9430e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_mouseInterface: {fileID: 1487046534}
-  m_timeToTriggerAction: 5
-  m_isLeftDownTime: 0
-  m_isMiddleDownTime: 0
-  m_isRightDownTime: 0
-  m_isLeftDown: 0
-  m_isMiddleDown: 0
-  m_isRightDown: 0
-  m_startRecording:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1335395568}
-        m_TargetAssemblyTypeName: MouseReplayerThreadMono, Assembly-CSharp
-        m_MethodName: StartRecording
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_replayRecording:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1335395568}
-        m_TargetAssemblyTypeName: MouseReplayerThreadMono, Assembly-CSharp
-        m_MethodName: ReplayRecord
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_stopRecording:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1335395568}
-        m_TargetAssemblyTypeName: MouseReplayerThreadMono, Assembly-CSharp
-        m_MethodName: StopRecordingOrPlaying
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

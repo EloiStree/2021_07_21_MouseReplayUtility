@@ -28,10 +28,6 @@ public class MouseReplayerThreadMono : MonoBehaviour
     public bool m_startThreadAtAwake;
 
 
-    public UnityEvent m_onStart;
-    public UnityEvent m_onStartReplay;
-    public UnityEvent m_onStartRecord;
-    public UnityEvent m_onStop;
 
     public uint GetSequenceActionCount()
     {
@@ -117,20 +113,13 @@ public class MouseReplayerThreadMono : MonoBehaviour
         string sequence= m_thread.GetSequenceAsText();
        MouseRecordSequenceToTextStorage.ConvertToRecord(sequence, out MouseRecordSequence record);
         m_thread.PlayReplaySequence(record);
-        m_onStartReplay.Invoke();
     }
 
-    public void PlaySequence(MouseRecordSequence sequence) {
-
-
-        m_onStartReplay.Invoke();
-    }
 
     public void StartRecording()
     {
         m_thread.StopRecordingOrPlaying();
         m_thread.StartRecording();
-        m_onStartRecord.Invoke();
 
     }
    
@@ -138,7 +127,6 @@ public class MouseReplayerThreadMono : MonoBehaviour
     {
 
         m_thread.StopRecordingOrPlaying();
-        m_onStop.Invoke();
 
     }
 
@@ -155,7 +143,6 @@ public class MouseReplayerThreadMono : MonoBehaviour
     public void StopRecordingOrPlaying() {
 
         m_thread.StopRecordingOrPlaying();
-        m_onStop.Invoke();
     }
     public void KillTheThread() {
         m_thread.StopThread();
@@ -188,7 +175,6 @@ public class MouseReplayerThreadMono : MonoBehaviour
     public void Play(MouseRecordSequence sequence)
     {
         m_thread.m_replaying.StartPlaying( sequence);
-        m_onStartReplay.Invoke();
     }
 
     private void OnDestroy()
