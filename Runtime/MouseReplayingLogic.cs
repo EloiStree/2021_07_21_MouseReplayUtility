@@ -69,6 +69,18 @@ public class MouseReplayingLogic
 
     public delegate void TextEventEmission(string text);
     public TextEventEmission m_listenToTextEmittedByReplay;
+
+    public void AddTextEmittedListener(TextEventEmission listener)
+    {
+        m_listenToTextEmittedByReplay += listener;
+    }
+    public void RemoveTextEmittedListener(TextEventEmission listener)
+    {
+        m_listenToTextEmittedByReplay -= listener;
+    }
+
+
+
     private void Execute(ActionToDo_TextEventRelease action)
     {
         if (m_listenToTextEmittedByReplay != null)

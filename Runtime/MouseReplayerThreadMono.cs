@@ -38,6 +38,8 @@ public class MouseReplayerThreadMono : MonoBehaviour
         return m_thread.GetSequenceActionCount();
     }
 
+ 
+
     public MouseReplayerThread.ThreadMode GetReplayerMode()
     {
         return m_thread.GetReplayerMode();
