@@ -14,7 +14,7 @@ public class MouseReplayerThreadMono : MonoBehaviour
 
     public MouseInterfaceMono m_defaultMouseInterface;
 
-    internal void PlayReplayFromFile(string path)
+    public void PlayReplayFromFile(string path)
     {
         if (File.Exists(path)) {
 
@@ -73,8 +73,14 @@ public class MouseReplayerThreadMono : MonoBehaviour
 
     internal void SaveAsReplayAsFileTo(string directoryPath, string fileName, string fileExtension)
     {
-        if(Directory.Exists(directoryPath))
-        File.WriteAllText(directoryPath + "/" + fileName+"."+ fileExtension, m_thread.GetSequenceAsText());
+        if (Directory.Exists(directoryPath) && fileExtension.Length>0) {
+
+
+            if (fileExtension[0] != '.')
+                fileExtension = "." + fileExtension;
+
+            File.WriteAllText(directoryPath + "/" + fileName+ fileExtension, m_thread.GetSequenceAsText());
+        }
     }
 
     public MouseRecorderLogic GetRecorder()
@@ -174,7 +180,7 @@ public class MouseReplayerThreadMono : MonoBehaviour
 
     public void Play(MouseRecordSequence sequence)
     {
-        m_thread.m_replaying.StartPlaying( sequence);
+        m_thread.PlayReplaySequence(sequence);
     }
 
     private void OnDestroy()
@@ -193,9 +199,19 @@ public class ActionToDoTime {
 
     public ulong m_timeInMilliseconds;
 
-    public ActionToDoTime(ulong when)
+    public ActionToDoTime(ulong whenInMilliseconds)
     {
-        m_timeInMilliseconds = when;
+        m_timeInMilliseconds = whenInMilliseconds;
+    }
+
+    public ulong GetTime()
+    {
+        return m_timeInMilliseconds;
+    }
+
+    public void SetTime(ulong valueInMilliseconds)
+    {
+        m_timeInMilliseconds = valueInMilliseconds;
     }
 }
 
@@ -318,6 +334,36 @@ public class MouseRecordSequence {
     public uint GetCount()
     {
         return (uint) m_actionRecorded.Count;
+    }
+
+    internal void AppendOtherSequence(MouseRecordSequence sequence)
+    {
+        if (sequence == null)
+            return;
+
+
+        ulong ms = GetTotalDuration();
+
+        foreach (ActionToDoTime a in sequence.GetActions())
+        {
+            a.SetTime(a.GetTime() + ms);
+            AddAction(a);
+        }
+    }
+
+    private void AddAction(ActionToDoTime a)
+    {
+        m_actionRecorded.Add(a);
+    }
+
+    public ActionToDoTime [] GetActions() { return m_actionRecorded.ToArray(); }
+
+    private ulong GetTotalDuration()
+    {
+        if (m_actionRecorded.Count == 0)
+            return 0;
+        CheckThatItIsSortByTime();
+        return m_actionRecorded[m_actionRecorded.Count - 1].m_timeInMilliseconds;
     }
 }
 

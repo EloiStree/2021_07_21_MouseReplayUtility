@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 public class MouseReplayingLogic
 {
@@ -17,6 +18,7 @@ public class MouseReplayingLogic
 
     public void StartPlaying(MouseRecordSequence sequence) {
 
+        m_playingTrack = new MouseRecordSequencePlayingTrack(sequence);
         m_replayingSequenceTemp = sequence;
         m_startPlaying = DateTime.Now;
         m_currentTime = DateTime.Now;
@@ -31,7 +33,7 @@ public class MouseReplayingLogic
         m_isPlaying = false;
     }
 
-
+    public MouseRecordSequencePlayingTrack m_playingTrack; 
     public void ThreadFunction() {
 
         if (m_mouseInterface == null)
@@ -45,7 +47,7 @@ public class MouseReplayingLogic
         m_previousTimeInMs = (ulong)(m_previousTime - m_startPlaying).TotalMilliseconds;
 
         if (m_currentTimeInMs != m_previousTimeInMs) { 
-            ActionToDoTime[] actions =  m_replayingSequenceTemp.GetActionsBetween(m_previousTimeInMs, m_currentTimeInMs);
+            List<ActionToDoTime> actions = m_playingTrack.GetActionsBetween(m_previousTimeInMs, m_currentTimeInMs);
             foreach (ActionToDoTime action in actions)
             {
                 if (action is ActionToDo_MouseClick)
@@ -57,7 +59,7 @@ public class MouseReplayingLogic
             }
 
             m_previousTime = m_currentTime;
-            if (!m_replayingSequenceTemp.IsThereSomeLeftAfter(m_currentTimeInMs))
+            if (m_playingTrack.IsItFinishedToPlay())
                 StopReplaying();
         }
     }
